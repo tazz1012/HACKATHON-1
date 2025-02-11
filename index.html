@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Login/Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+        .form-container {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            padding: 50px;
+            transition: transform 0.6s ease-in-out;
+        }
+        .login-container {
+            left: 0;
+            transform: translateX(0%);
+        }
+        .register-container {
+            left: 50%;
+            transform: translateX(100%);
+        }
+        .container.active .login-container {
+            transform: translateX(-100%);
+        }
+        .container.active .register-container {
+            transform: translateX(0%);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .input-group i {
+            margin-right: 10px;
+            color: #555;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            border: none;
+            outline: none;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container button:hover {
+            background: #0056b3;
+        }
+        .side-container {
+            width: 50%;
+            height: 100%;
+            background: #007BFF;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+            position: absolute;
+            right: 0;
+            transition: transform 0.6s ease-in-out;
+        }
+        .container.active .side-container {
+            transform: translateX(-100%);
+        }
+    </style>
+    <!-- Updated Font Awesome Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container login-container">
+            <h2>Login</h2>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-users"></i>
+                <select>
+                    <option value="student">Student</option>
+                    <option value="employer">Employer</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password">
+            </div>
+            <button>Login</button>
+            <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+        </div>
+        <div class="form-container register-container">
+            <h2>Register</h2>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Last Name">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-users"></i>
+                <select>
+                    <option value="student">Student</option>
+                    <option value="employer">Employer</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password">
+            </div>
+            <button>Register</button>
+            <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </div>
+        <div class="side-container">
+            <h2>Welcome Back!</h2>
+            <p>Already have an account?</p>
+            <button id="toggleLogin">Login</button>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById("container");
+        const showRegister = document.getElementById("showRegister");
+        const showLogin = document.getElementById("showLogin");
+
+        showRegister.addEventListener("click", () => {
+            container.classList.add("active");
+        });
+
+        showLogin.addEventListener("click", () => {
+            container.classList.remove("active");
+        });
+    </script>
+</body>
+</html>
